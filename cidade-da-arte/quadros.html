@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Quadros | Cidade da Arte</title>
+
+    <meta name="description"
+        content="Quadros decorativos da Cidade da Arte.">
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="site-header">
+
+        <div class="header-inner">
+
+            <a href="index.html" class="logo">
+
+                <svg class="logo-diamond"
+                    width="34"
+                    height="34"
+                    viewBox="0 0 34 34"
+                    xmlns="http://www.w3.org/2000/svg">
+
+                    <rect
+                        x="4"
+                        y="4"
+                        width="26"
+                        height="26"
+                        rx="2"
+                        transform="rotate(45 17 17)"
+                        fill="none"
+                        stroke="#1A1A1A"
+                        stroke-width="2" />
+
+                    <circle
+                        cx="17"
+                        cy="17"
+                        r="4"
+                        fill="#0891B2" />
+
+                </svg>
+
+                <span class="logo-text">
+                    cidade da arte
+                </span>
+
+            </a>
+
+            <a href="https://wa.me/5573999999999"
+                target="_blank"
+                class="btn btn-header-whats">
+
+                <span>
+                    Fale no WhatsApp
+                </span>
+
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="catalogo-hero">
+
+        <div class="hero-content">
+
+            <p class="hero-eyebrow">
+
+                Cidade da Arte
+
+            </p>
+
+            <h1 class="hero-title">
+
+                Quadros
+
+            </h1>
+
+            <p class="hero-subtitle">
+
+                Encontre quadros decorativos, personalizados e exclusivos para transformar qualquer ambiente.
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= CATÁLOGO ================= -->
+
+    <section class="catalogo">
+
+        <div class="section-inner">
+
+            <h2 class="section-title">
+
+                Nossos Quadros
+
+            </h2>
+
+            <p class="section-subtitle">
+
+                Escolha seu quadro e finalize a compra pelo WhatsApp.
+
+            </p>
+
+            <div
+                id="lista-produtos"
+                class="cards-grid">
+
+                <!--
+                    Os produtos cadastrados no painel
+                    aparecerão automaticamente aqui.
+                -->
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= RODAPÉ ================= -->
+
+    <footer class="site-footer">
+
+        <p class="footer-brand">
+
+            Cidade da Arte
+
+        </p>
+
+        <p class="footer-copy">
+
+            © 2026 Cidade da Arte. Todos os direitos reservados.
+
+        </p>
+
+        <a href="https://instagram.com/cidadedaarte.ios"
+            target="_blank"
+            class="footer-instagram">
+
+            @cidadedaarte.ios
+
+        </a>
+
+    </footer>
+
+    <!-- ================= SCRIPTS ================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script src="supabase.js"></script>
+
+    <script>
+
+        const categoriaPagina = "Quadros";
+
+    </script>
+
+    <script src="catalogo.js"></script>
+
+</body>
+
+</html>

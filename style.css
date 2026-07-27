@@ -1,0 +1,432 @@
+/* ============================================================
+   Cidade da Arte — estilos
+   Mobile-first: regras base valem para telas pequenas,
+   media queries (min-width) ajustam para telas maiores.
+   ============================================================ */
+
+:root {
+  --cor-fundo: #F0EBE2;      /* creme/bege claro */
+  --cor-texto: #1A1A1A;      /* preto grafite */
+  --cor-branco: #FFFFFF;
+
+  --primary: #0891B2;
+  --primary-hover: #0EA5E9;
+  --primary-dark: #0369A1;
+  --primary-light: #67E8F9;
+  --primary-glow: rgba(8, 145, 178, 0.18);
+
+  --fonte-titulo: 'Playfair Display', Georgia, serif;
+  --fonte-texto: 'Poppins', 'Inter', Arial, sans-serif;
+
+  --header-altura: 70px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------- Botões ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-family: var(--fonte-texto);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--cor-branco);
+  box-shadow: 0 8px 20px rgba(8, 145, 178, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-header-whats {
+  background-color: var(--cor-texto);
+  color: var(--cor-branco);
+  padding: 10px 18px;
+  font-size: 0.85rem;
+}
+
+.icon-whats {
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   HEADER FIXO
+   ============================================================ */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-altura);
+  background-color: rgba(240, 235, 226, 0.92);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+  transition: box-shadow 0.2s ease;
+}
+
+.site-header.scrolled {
+  box-shadow: 0 4px 16px rgba(26, 26, 26, 0.08);
+}
+
+.header-inner {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-diamond {
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+  text-transform: lowercase;
+}
+
+/* No mobile, o texto do botão do header some para caber melhor;
+   a versão completa aparece a partir de telas maiores. */
+.btn-header-whats span {
+  display: none;
+}
+
+@media (min-width: 480px) {
+  .btn-header-whats span {
+    display: inline;
+  }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
+  min-height: 100vh;
+  padding-top: var(--header-altura);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background:
+    radial-gradient(circle at 20% 20%, var(--primary-glow), transparent 45%),
+    radial-gradient(circle at 80% 75%, rgba(8, 145, 178, 0.14), transparent 50%),
+    linear-gradient(160deg, #F0EBE2 0%, #e6ddcb 100%);
+  overflow: hidden;
+}
+
+/* Losango decorativo grande no fundo do hero, ecoando o logo */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 60vmax;
+  height: 60vmax;
+  border: 2px solid rgba(26, 26, 26, 0.06);
+  transform: rotate(45deg);
+  border-radius: 24px;
+  top: 50%;
+  left: 50%;
+  margin-top: -30vmax;
+  margin-left: -30vmax;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  padding: 0 24px;
+}
+
+.hero-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 2.4rem;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(26, 26, 26, 0.75);
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3.4rem;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+/* ============================================================
+   SEÇÕES GERAIS
+   ============================================================ */
+
+.section {
+  padding: 80px 20px;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-inner--narrow {
+  max-width: 720px;
+  text-align: center;
+}
+
+.section-title {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: rgba(26, 26, 26, 0.65);
+  font-weight: 300;
+  margin-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.4rem;
+  }
+}
+
+/* ---------- Categorias (grid de cards) ---------- */
+
+.categorias {
+  background-color: var(--cor-branco);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 640px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background-color: var(--cor-fundo);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(26, 26, 26, 0.12);
+}
+
+.card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px 22px 24px;
+}
+
+.card-title {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: rgba(26, 26, 26, 0.7);
+  font-weight: 300;
+  margin-bottom: 14px;
+}
+
+.card-price {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  padding: 5px 14px;
+}
+
+/* ---------- Sobre a loja ---------- */
+
+.sobre-text {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(26, 26, 26, 0.8);
+}
+
+/* ---------- Localização ---------- */
+
+.localizacao {
+  background-color: var(--cor-branco);
+}
+
+.localizacao-text {
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.site-footer {
+  background-color: var(--cor-texto);
+  color: var(--cor-fundo);
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.footer-brand {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  text-transform: lowercase;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: rgba(240, 235, 226, 0.6);
+  margin-bottom: 10px;
+}
+
+.footer-instagram {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--primary-light);
+}
+
+.footer-instagram:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   BOTÃO FLUTUANTE WHATSAPP
+   ============================================================ */
+
+.whats-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: #25D366;
+  color: var(--cor-branco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  transition: transform 0.2s ease;
+}
+
+.whats-float:hover {
+  transform: scale(1.08);
+}
+
+/* ============================================================
+   ANIMAÇÃO DE ENTRADA (controlada via script.js)
+   ============================================================ */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

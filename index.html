@@ -1,0 +1,149 @@
+<!-- Cidade da Arte — landing page (catálogo visual, sem carrinho/checkout) -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cidade da Arte | Quadros e Espelhos Decorativos — Ilhéus, BA</title>
+  <meta name="description" content="Loja de fábrica de quadros decorativos e espelhos em Ilhéus, Bahia. Pronta entrega e sob medida. Leve arte para sua vida!">
+
+  <!-- Fontes: Playfair Display (títulos) + Poppins (texto corrido) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===================== HEADER FIXO ===================== -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <!-- Logo: losango geométrico + nome da marca -->
+      <a href="#topo" class="logo" aria-label="Cidade da Arte - início">
+        <svg class="logo-diamond" width="34" height="34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="4" y="4" width="26" height="26" rx="2" transform="rotate(45 17 17)" fill="none" stroke="#1A1A1A" stroke-width="2"/>
+          <circle cx="17" cy="17" r="4" fill="#0891B2"/>
+        </svg>
+        <span class="logo-text">cidade da arte</span>
+      </a>
+
+      <!-- Placeholder do WhatsApp: trocar SEU_NUMERO_AQUI pelo número real (com DDI+DDD, ex: 5573999999999) -->
+      <a href="https://wa.me/SEU_NUMERO_AQUI" target="_blank" rel="noopener" class="btn btn-header-whats">
+        <svg class="icon-whats" width="18" height="18" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="currentColor" d="M16.04 3C9.4 3 4 8.4 4 15.04c0 2.23.6 4.36 1.73 6.24L4 29l7.9-1.7a11.9 11.9 0 0 0 4.14.74h.01C22.7 28.04 28 22.64 28 16 28 9.36 22.68 3 16.04 3zm0 21.6a9.9 9.9 0 0 1-5.05-1.39l-.36-.21-4.7 1.01 1.03-4.58-.24-.38a9.86 9.86 0 0 1-1.52-5.29c0-5.46 4.45-9.9 9.92-9.9 5.46 0 9.9 4.44 9.9 9.9 0 5.47-4.44 9.84-9.98 9.84zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.73-1.63-2.03-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/>
+        </svg>
+        <span>Fale no WhatsApp</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="topo">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-eyebrow">Fábrica de quadros e espelhos · Ilhéus, BA</p>
+        <h1 class="hero-title">Leve arte para sua vida!</h1>
+        <p class="hero-subtitle">Loja de fábrica de quadros e espelhos — pronta entrega e sob medida.</p>
+        <a href="https://wa.me/SEU_NUMERO_AQUI" target="_blank" rel="noopener" class="btn btn-primary">Peça seu orçamento</a>
+      </div>
+    </section>
+
+    <!-- ===================== CATEGORIAS ===================== -->
+    <section class="section categorias" id="categorias">
+      <div class="section-inner">
+        <h2 class="section-title">Nossas categorias</h2>
+        <p class="section-subtitle">Do clássico ao contemporâneo, um quadro para cada ambiente.</p>
+
+        <div class="cards-grid">
+
+          <article class="card">
+            <img class="card-img" src="https://placehold.co/600x450/F0EBE2/1A1A1A?font=playfair-display&text=Quadros+Decorativos" alt="Quadros decorativos - paisagens, abstratos, floral e minimalista" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Quadros Decorativos</h3>
+              <p class="card-text">Paisagens, abstratos, floral e minimalista para todos os estilos de decoração.</p>
+              <span class="card-price">Consulte valores</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="card-img" src="https://placehold.co/600x450/F0EBE2/1A1A1A?font=playfair-display&text=Arte+Religiosa" alt="Quadros de arte religiosa" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Arte Religiosa</h3>
+              <p class="card-text">Peças que trazem fé e paz para qualquer espaço da sua casa.</p>
+              <span class="card-price">Consulte valores</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="card-img" src="https://placehold.co/600x450/F0EBE2/1A1A1A?font=playfair-display&text=Quadros+Infantis" alt="Quadros infantis" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Quadros Infantis</h3>
+              <p class="card-text">Cores e temas lúdicos para decorar o quarto dos pequenos com carinho.</p>
+              <span class="card-price">Consulte valores</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="card-img" src="https://placehold.co/600x450/F0EBE2/1A1A1A?font=playfair-display&text=Coleções+Temáticas" alt="Coleções temáticas e sazonais" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Coleções Temáticas/Sazonais</h3>
+              <p class="card-text">Edições especiais para datas comemorativas e temporadas do ano.</p>
+              <span class="card-price">Consulte valores</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <img class="card-img" src="https://placehold.co/600x450/F0EBE2/1A1A1A?font=playfair-display&text=Espelhos+Decorativos" alt="Espelhos decorativos" loading="lazy">
+            <div class="card-body">
+              <h3 class="card-title">Espelhos Decorativos</h3>
+              <p class="card-text">Modelos que unem funcionalidade e sofisticação para qualquer ambiente.</p>
+              <span class="card-price">Consulte valores</span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SOBRE A LOJA ===================== -->
+    <section class="section sobre" id="sobre">
+      <div class="section-inner section-inner--narrow">
+        <h2 class="section-title">Sobre a loja</h2>
+        <p class="sobre-text">
+          A Cidade da Arte é uma loja de fábrica, com produção 100% nacional. Trabalhamos com tela
+          canvas de alta qualidade, 100% algodão, garantindo durabilidade e um acabamento premium
+          em cada peça. Além da pronta entrega, fazemos quadros e espelhos sob medida, do jeitinho
+          que você imaginar para o seu espaço.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== LOCALIZAÇÃO ===================== -->
+    <section class="section localizacao" id="localizacao">
+      <div class="section-inner section-inner--narrow">
+        <h2 class="section-title">Localização</h2>
+        <p class="localizacao-text">📍 Ilhéus, Bahia</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="site-footer">
+    <p class="footer-brand">Cidade da Arte</p>
+    <p class="footer-copy">&copy; <span id="ano-atual">2026</span> Cidade da Arte. Todos os direitos reservados.</p>
+    <a href="https://instagram.com/cidadedaarte.ios" target="_blank" rel="noopener" class="footer-instagram">@cidadedaarte.ios</a>
+  </footer>
+
+  <!-- ===================== BOTÃO FLUTUANTE WHATSAPP ===================== -->
+  <a href="https://wa.me/SEU_NUMERO_AQUI" target="_blank" rel="noopener" class="whats-float" aria-label="Fale no WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path fill="currentColor" d="M16.04 3C9.4 3 4 8.4 4 15.04c0 2.23.6 4.36 1.73 6.24L4 29l7.9-1.7a11.9 11.9 0 0 0 4.14.74h.01C22.7 28.04 28 22.64 28 16 28 9.36 22.68 3 16.04 3zm0 21.6a9.9 9.9 0 0 1-5.05-1.39l-.36-.21-4.7 1.01 1.03-4.58-.24-.38a9.86 9.86 0 0 1-1.52-5.29c0-5.46 4.45-9.9 9.92-9.9 5.46 0 9.9 4.44 9.9 9.9 0 5.47-4.44 9.84-9.98 9.84zm5.44-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.24-.46-2.36-1.46-.87-.78-1.46-1.73-1.63-2.03-.17-.3-.02-.46.13-.6.13-.13.3-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5-.17 0-.37-.02-.57-.02-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/>
+    </svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>

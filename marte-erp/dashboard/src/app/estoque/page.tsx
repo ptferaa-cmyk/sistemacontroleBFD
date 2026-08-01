@@ -357,7 +357,7 @@ export default function EstoquePage() {
                     const isAlert = insumo.quantidade <= insumo.qtdMinima * 1.15;
                     return (
                       <tr key={insumo.id}>
-                        <td>
+                        <td data-label="Nome">
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             {insumo.codigoCor && (
                               <div
@@ -372,16 +372,16 @@ export default function EstoquePage() {
                             <strong>{insumo.nome}</strong>
                           </div>
                         </td>
-                        <td>{insumo.unidade}</td>
-                        <td>{fmt(insumo.custoUnit)}<span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginLeft: '2px' }}>/{insumo.unidade}</span></td>
-                        <td className={isAlert ? styles.textError : styles.textSuccess}>
+                        <td data-label="Unid.">{insumo.unidade}</td>
+                        <td data-label="Custo">{fmt(insumo.custoUnit)}<span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginLeft: '2px' }}>/{insumo.unidade}</span></td>
+                        <td data-label="Estoque" className={isAlert ? styles.textError : styles.textSuccess}>
                           <strong>{insumo.quantidade}</strong>
                         </td>
-                        <td style={{ color: 'var(--text-muted)' }}>{insumo.qtdMinima}</td>
-                        <td style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                        <td data-label="Mínimo" style={{ color: 'var(--text-muted)' }}>{insumo.qtdMinima}</td>
+                        <td data-label="Fornecedor" style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
                           {insumo.fornecedor || <em>—</em>}
                         </td>
-                        <td>
+                        <td data-label="Status">
                           {isAlert ? (
                             <span className={styles.badgeError} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25rem' }}>
                               <IconWarning size={14} /> Baixo
@@ -392,7 +392,7 @@ export default function EstoquePage() {
                             </span>
                           )}
                         </td>
-                        <td>
+                        <td data-label="Ações">
                           <div className={styles.actions}>
                             <button
                               className={styles.btnAction}

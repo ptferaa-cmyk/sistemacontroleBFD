@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { AuthProvider, useAuth } from "./AuthProvider";
 import { ToastProvider } from "./Toast";
@@ -34,34 +35,50 @@ function Shell({ children }: { children: React.ReactNode }) {
 function DashboardLayout({ children }: { children: React.ReactNode }) {
   const { user, logout } = useAuth();
   const initial = user?.nome?.charAt(0)?.toUpperCase() ?? "U";
+  const pathname = usePathname();
+
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  // Open by default on desktop after hydration
+  useEffect(() => {
+    setSidebarOpen(window.innerWidth >= 768);
+  }, []);
+
+  // Close automatically on mobile when navigating
+  useEffect(() => {
+    if (window.innerWidth < 768) {
+      setSidebarOpen(false);
+    }
+  }, [pathname]);
 
   return (
     <div className={styles.appContainer}>
-      <Sidebar />
+      {sidebarOpen && (
+        <div className={styles.overlay} onClick={() => setSidebarOpen(false)} />
+      )}
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <main className={styles.mainContent}>
         <header className={styles.topHeader}>
           <div className={styles.headerLeft}>
+            <button
+              className={styles.menuBtn}
+              onClick={() => setSidebarOpen(o => !o)}
+              aria-label="Alternar menu"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            </button>
             <h1>Gestão de Estoque</h1>
           </div>
           <div className={styles.headerRight}>
             <div className={styles.userProfile}>
               <div className={styles.avatar}>{initial}</div>
-              <span>{user?.nome ?? "Usuário"}</span>
+              <span className={styles.userName}>{user?.nome ?? "Usuário"}</span>
             </div>
-            <button
-              onClick={logout}
-              style={{
-                marginLeft: "12px",
-                padding: "6px 14px",
-                background: "rgba(239,68,68,0.1)",
-                border: "1px solid rgba(239,68,68,0.3)",
-                borderRadius: "6px",
-                color: "#EF4444",
-                fontSize: "0.8rem",
-                cursor: "pointer",
-                fontFamily: "inherit",
-              }}
-            >
+            <button onClick={logout} className={styles.logoutBtn}>
               Sair
             </button>
           </div>

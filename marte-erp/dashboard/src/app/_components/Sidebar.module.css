@@ -1,20 +1,61 @@
 .sidebar {
-  width: var(--sidebar-width);
   background: #020617;
   border-right: 1px solid #1E293B;
   display: flex;
   flex-direction: column;
   z-index: 20;
   box-shadow: 8px 0 30px rgba(0,0,0,.25);
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: width 0.3s ease;
 }
 
+/* Desktop: open */
+.sidebarOpen {
+  width: var(--sidebar-width);
+}
+
+/* Desktop: closed (collapsed) */
+.sidebarClosed {
+  width: 0;
+  border-right: none;
+  box-shadow: none;
+}
+
+/* ── Mobile ───────────────────────────── */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    z-index: 200;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebarOpen {
+    width: var(--sidebar-width) !important;
+    transform: translateX(0);
+  }
+
+  .sidebarClosed {
+    width: var(--sidebar-width) !important;
+    transform: translateX(-100%);
+    border-right: 1px solid #1E293B;
+    box-shadow: 8px 0 30px rgba(0,0,0,.25);
+  }
+}
+
+/* ── Logo / Header ─────────────────────── */
 .logoContainer {
   height: var(--header-height);
+  min-height: var(--header-height);
   display: flex;
   align-items: center;
-  padding: 0 1.5rem;
-  gap: 1rem;
+  padding: 0 1.25rem;
+  gap: 0.75rem;
   border-bottom: 1px solid #1E293B;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -29,15 +70,45 @@
   font-size: 1.35rem;
   font-weight: 800;
   box-shadow: 0 0 25px rgba(8,145,178,.45);
+  flex-shrink: 0;
 }
 
 .brandName {
-  font-size: 1.45rem;
+  font-size: 1.35rem;
   font-weight: 800;
   color: #FFFFFF;
   letter-spacing: -.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* Close (X) button — visible on mobile, optional on desktop */
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  color: #64748B;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: 0.2s;
+}
+
+.closeBtn:hover {
+  background: rgba(239,68,68,0.12);
+  color: #EF4444;
+}
+
+@media (min-width: 769px) {
+  .closeBtn {
+    display: none;
+  }
+}
+
+/* ── Nav ───────────────────────────────── */
 .nav {
   flex: 1;
   padding: 1.5rem 1rem;
@@ -61,6 +132,7 @@
   color: #64748B;
   padding-left: .75rem;
   margin-bottom: .3rem;
+  white-space: nowrap;
 }
 
 .navLink {
@@ -68,16 +140,12 @@
   display: flex;
   align-items: center;
   gap: .8rem;
-
   padding: .9rem 1rem;
-
   border-radius: 12px;
-
   color: #CBD5E1;
-
   font-weight: 500;
-
   transition: .25s;
+  white-space: nowrap;
 }
 
 .navLink:hover {
@@ -108,11 +176,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   color: #94A3B8;
-
   transition: .25s;
-
   flex-shrink: 0;
 }
 
@@ -121,9 +186,11 @@
   color: #06B6D4;
 }
 
+/* ── Footer ────────────────────────────── */
 .footer {
   padding: 1.5rem;
   border-top: 1px solid #1E293B;
+  flex-shrink: 0;
 }
 
 .systemStatus {
@@ -141,21 +208,11 @@
   background: #22C55E;
   box-shadow: 0 0 12px #22C55E;
   animation: pulse 2s infinite;
+  flex-shrink: 0;
 }
 
 @keyframes pulse {
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: .5;
-    transform: scale(1.25);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+  0%   { opacity: 1; transform: scale(1); }
+  50%  { opacity: .5; transform: scale(1.25); }
+  100% { opacity: 1; transform: scale(1); }
 }

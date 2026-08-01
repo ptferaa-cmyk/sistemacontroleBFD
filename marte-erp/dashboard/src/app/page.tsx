@@ -30,6 +30,22 @@ interface TopInsumo {
   value: number;
 }
 
+interface InsumoAlerta {
+  id: number;
+  nome: string;
+  quantidade: number;
+  qtdMinima: number;
+  unidade: string;
+  codigoCor: string | null;
+}
+
+interface ArteRecente {
+  id: number;
+  nome: string;
+  precoVenda: number;
+  margemBruta: number;
+}
+
 interface DashboardData {
   totalInsumos: number;
   valorTotalEstoque: number;
@@ -37,8 +53,8 @@ interface DashboardData {
   totalAlertas: number;
   entradasHoje: number;
   saidasHoje: number;
-  alertas: any[];
-  artesRecentes: any[];
+  alertas: InsumoAlerta[];
+  artesRecentes: ArteRecente[];
   topInsumos: TopInsumo[];
   movPorDia: MovDia[];
 }
@@ -280,7 +296,7 @@ export default function Dashboard() {
                 {data.artesRecentes.length === 0 ? (
                   <div className={styles.emptyState}>Nenhum produto cadastrado ainda.</div>
                 ) : (
-                  data.artesRecentes.map((arte: any) => (
+                  data.artesRecentes.map((arte) => (
                     <article key={arte.id} className={styles.productCard}>
                       <div className={styles.productImage}>
                         <span>{arte.nome?.charAt(0) ?? 'Q'}</span>
@@ -314,7 +330,7 @@ export default function Dashboard() {
                 {data.alertas.length === 0 ? (
                   <div className={styles.emptyState}>Nenhum alerta ativo no momento.</div>
                 ) : (
-                  data.alertas.map((alerta: any) => (
+                  data.alertas.map((alerta) => (
                     <article key={alerta.id} className={styles.alertCard}>
                       <div className={styles.alertCardTop}>
                         <div className={styles.alertBadge}>

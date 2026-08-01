@@ -10,8 +10,19 @@ import { api } from '../../lib/api';
 
 const UNIDADES_PADRAO = ['metros', 'cm', 'mm', 'unidade', 'kg', 'g', 'litros', 'folha', 'rolo'];
 
+type Insumo = {
+  id: number;
+  nome: string;
+  unidade: string;
+  custoUnit: number;
+  qtdMinima: number;
+  quantidade: number;
+  fornecedor: string | null;
+  codigoCor: string | null;
+};
+
 export default function EstoquePage() {
-  const [insumos, setInsumos] = useState<any[]>([]);
+  const [insumos, setInsumos] = useState<Insumo[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const toast = useToast();
@@ -58,7 +69,7 @@ export default function EstoquePage() {
 
   const fetchInsumos = async () => {
     try {
-      const data = await api.get<any[]>('/insumos', token);
+      const data = await api.get<Insumo[]>('/insumos', token);
       setInsumos(data);
     } catch (error) {
       console.error(error);
@@ -85,7 +96,7 @@ export default function EstoquePage() {
     setEditId(null);
   };
 
-  const handleEditClick = (insumo: any) => {
+  const handleEditClick = (insumo: Insumo) => {
     setNome(insumo.nome);
     setUnidade(insumo.codigoCor ? 'ml' : insumo.unidade);
     setCustoUnit(insumo.custoUnit.toString());
@@ -133,9 +144,8 @@ export default function EstoquePage() {
       toast.success(isEditing ? 'Insumo atualizado com sucesso!' : 'Insumo cadastrado com sucesso!');
       resetForm();
       fetchInsumos();
-    } catch (error: any) {
-      console.error(error);
-      toast.error(error?.message || 'Erro ao salvar insumo.');
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Erro ao salvar insumo.');
     } finally {
       setSaving(false);
     }
@@ -343,7 +353,7 @@ export default function EstoquePage() {
                   </tr>
                 </thead>
                 <tbody>
-                  {insumos.map((insumo: any) => {
+                  {insumos.map((insumo) => {
                     const isAlert = insumo.quantidade <= insumo.qtdMinima * 1.15;
                     return (
                       <tr key={insumo.id}>

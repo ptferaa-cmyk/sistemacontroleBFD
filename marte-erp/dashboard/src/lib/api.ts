@@ -31,7 +31,7 @@ async function request<T>(
 
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
-    throw new Error((body as any).error ?? `Erro ${res.status}`);
+    throw new Error((body as { error?: string }).error ?? `Erro ${res.status}`);
   }
 
   // 204 No Content
@@ -67,7 +67,7 @@ export const api = {
     });
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
-      throw new Error((body as any).error ?? `Erro ${res.status}`);
+      throw new Error((body as { error?: string }).error ?? `Erro ${res.status}`);
     }
     return res.json() as Promise<T>;
   },

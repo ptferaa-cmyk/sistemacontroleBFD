@@ -24,8 +24,8 @@ export default function LoginPage() {
     setLoading(true);
     try {
       await login(email, senha);
-    } catch (err: any) {
-      setError(err.message || "Erro inesperado. Tente novamente.");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Erro inesperado. Tente novamente.");
     } finally {
       setLoading(false);
     }

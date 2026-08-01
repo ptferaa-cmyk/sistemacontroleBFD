@@ -107,8 +107,8 @@ export default function UsuariosPage() {
       toast.success(isEditing ? "Usuário atualizado!" : "Usuário criado!");
       resetForm();
       fetchUsuarios();
-    } catch (e: any) {
-      toast.error(e?.message || "Erro ao salvar.");
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Erro ao salvar.");
     } finally {
       setSaving(false);
     }
@@ -119,8 +119,8 @@ export default function UsuariosPage() {
       await api.patch(`/usuarios/${u.id}/toggle`, token, {});
       toast.success(`Usuário ${u.ativo ? "desativado" : "ativado"}.`);
       fetchUsuarios();
-    } catch (e: any) {
-      toast.error(e?.message || "Erro ao alterar status.");
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Erro ao alterar status.");
     }
   };
 
@@ -131,8 +131,8 @@ export default function UsuariosPage() {
       toast.success("Usuário excluído.");
       if (editId === confirmModal.usuarioId) resetForm();
       fetchUsuarios();
-    } catch (e: any) {
-      toast.error(e?.message || "Erro ao excluir.");
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Erro ao excluir.");
     } finally {
       setConfirmModal({ isOpen: false, usuarioId: null, nome: "" });
     }
@@ -150,8 +150,8 @@ export default function UsuariosPage() {
       toast.success("Senha redefinida com sucesso.");
       setResetId(null);
       setResetNovaSenha("");
-    } catch (e: any) {
-      toast.error(e?.message || "Erro ao redefinir senha.");
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Erro ao redefinir senha.");
     } finally {
       setSaving(false);
     }
@@ -172,8 +172,8 @@ export default function UsuariosPage() {
       await api.patch('/auth/me/senha', token, { senha_atual: senhaAtual, nova_senha: novaSenha });
       toast.success("Senha alterada com sucesso.");
       setSenhaAtual(""); setNovaSenha(""); setConfirmarSenha("");
-    } catch (e: any) {
-      toast.error(e?.message || "Erro ao alterar senha.");
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : "Erro ao alterar senha.");
     } finally {
       setSaving(false);
     }

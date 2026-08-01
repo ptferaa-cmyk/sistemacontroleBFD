@@ -6,6 +6,22 @@
   position: relative;
 }
 
+.overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 150;
+  }
+}
+
 .mainContent {
   flex: 1;
   display: flex;
@@ -13,6 +29,7 @@
   min-height: 100vh;
   overflow: hidden;
   background: #0F172A;
+  min-width: 0;
 }
 
 .topHeader {
@@ -37,34 +54,70 @@
   box-shadow: 0 6px 25px rgba(0,0,0,.25);
 }
 
+@media (max-width: 768px) {
+  .topHeader {
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
 .headerLeft h1 {
   font-size: 1.6rem;
   font-weight: 700;
   color: #F8FAFC;
   letter-spacing: -.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .headerLeft h1 {
+    font-size: 1.1rem;
+  }
+}
+
+.menuBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  color: #94A3B8;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: 0.2s;
+}
+
+.menuBtn:hover {
+  background: #1E293B;
+  color: #F8FAFC;
 }
 
 .headerRight {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 .userProfile {
   display: flex;
   align-items: center;
   gap: .75rem;
-
   padding: .55rem 1rem;
-
   border-radius: 999px;
-
   background: #1E293B;
-
   border: 1px solid #334155;
-
   color: white;
-
   transition: .25s;
 }
 
@@ -77,30 +130,60 @@
 .avatar {
   width: 36px;
   height: 36px;
-
   border-radius: 50%;
-
   background: linear-gradient(135deg,#0891B2,#06B6D4);
-
   color: white;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-weight: 700;
-
   box-shadow: 0 0 18px rgba(8,145,178,.45);
+  flex-shrink: 0;
+}
+
+.userName {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .userName {
+    display: none;
+  }
+
+  .userProfile {
+    padding: .45rem .65rem;
+  }
+}
+
+.logoutBtn {
+  padding: 6px 14px;
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3) !important;
+  border-radius: 6px;
+  color: #EF4444;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+  transition: 0.2s;
+}
+
+.logoutBtn:hover {
+  background: rgba(239,68,68,0.2);
+}
+
+@media (max-width: 480px) {
+  .logoutBtn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
 }
 
 .contentArea {
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-
-  /* Sem padding próprio — o page.module.css .container gerencia o espaçamento */
   padding: 0;
-
   background: #0F172A;
   scroll-behavior: smooth;
 }

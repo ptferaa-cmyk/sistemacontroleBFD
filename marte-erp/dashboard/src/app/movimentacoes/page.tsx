@@ -7,7 +7,20 @@ import { useAuth } from '../_components/AuthProvider';
 import { api } from '../../lib/api';
 
 type Insumo = { id: number; nome: string; unidade: string; codigoCor: string | null; quantidade: number };
-type Arte = { id: number; nome: string; receitas: any[] };
+type ReceitaItem = {
+  insumo: { id: number; nome: string; unidade: string; codigoCor: string | null };
+  quantidade: number;
+};
+type Arte = { id: number; nome: string; receitas: ReceitaItem[] };
+type ConsumoItem = {
+  insumoId: number;
+  nome: string;
+  unidade: string;
+  codigoCor: string | null;
+  isColor: boolean;
+  quantidadeSugerida: number;
+  quantidadeFinal: string;
+};
 type Movimentacao = {
   id: number;
   tipo: 'entrada' | 'saida';
@@ -32,7 +45,7 @@ export default function MovimentacoesPage() {
   const [selectedArteId, setSelectedArteId] = useState('');
   const [selectedArte, setSelectedArte] = useState<Arte | null>(null);
   const [qtdProduzida, setQtdProduzida] = useState(1);
-  const [consumos, setConsumos] = useState<any[]>([]);
+  const [consumos, setConsumos] = useState<ConsumoItem[]>([]);
 
   // State: Avulsa
   const [avInsumoId, setAvInsumoId] = useState('');
@@ -50,7 +63,7 @@ export default function MovimentacoesPage() {
       setArtes(artesData);
       setInsumos(insumosData);
       setHistorico(historicoData);
-    } catch (e) {
+    } catch {
       toast.error('Erro ao buscar dados.');
     } finally {
       setLoading(false);
@@ -110,8 +123,8 @@ export default function MovimentacoesPage() {
       setQtdProduzida(1);
       fetchData();
       setActiveTab('historico');
-    } catch (e: any) {
-      toast.error(e?.message || 'Erro ao dar baixa.');
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : 'Erro ao dar baixa.');
     }
   };
 
@@ -131,8 +144,8 @@ export default function MovimentacoesPage() {
       setAvMotivo('');
       fetchData();
       setActiveTab('historico');
-    } catch (e: any) {
-      toast.error(e?.message || 'Erro ao registrar movimentação.');
+    } catch (e) {
+      toast.error(e instanceof Error ? e.message : 'Erro ao registrar movimentação.');
     }
   };
 
@@ -186,15 +199,15 @@ export default function MovimentacoesPage() {
                   <tbody>
                     {historico.map(h => (
                       <tr key={h.id}>
-                        <td>{new Date(h.criadoEm).toLocaleString('pt-BR')}</td>
-                        <td>
+                        <td data-label="Data/Hora">{new Date(h.criadoEm).toLocaleString('pt-BR')}</td>
+                        <td data-label="Tipo">
                           {h.tipo === 'entrada' ? (
                             <span className={styles.badgeSuccess}>Entrada</span>
                           ) : (
                             <span className={styles.badgeError}>Saída</span>
                           )}
                         </td>
-                        <td>
+                        <td data-label="Material">
                           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             {h.insumo.codigoCor && (
                               <div style={{ width: '12px', height: '12px', borderRadius: '50%', backgroundColor: h.insumo.codigoCor, border: '1px solid var(--border)' }} />
@@ -202,9 +215,9 @@ export default function MovimentacoesPage() {
                             {h.insumo.nome}
                           </div>
                         </td>
-                        <td>{h.quantidade} {h.insumo.unidade}</td>
-                        <td style={{ color: 'var(--text-muted)' }}>{h.motivo}</td>
-                        <td style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
+                        <td data-label="Qtd">{h.quantidade} {h.insumo.unidade}</td>
+                        <td data-label="Motivo" style={{ color: 'var(--text-muted)' }}>{h.motivo}</td>
+                        <td data-label="Responsável" style={{ color: 'var(--text-muted)', fontSize: '0.85rem' }}>
                           {h.usuario ? h.usuario.nome : <em>—</em>}
                         </td>
                       </tr>
@@ -297,7 +310,7 @@ export default function MovimentacoesPage() {
                 </div>
 
                 <div className={styles.warningBox}>
-                  <strong>Atenção:</strong> Os valores da coluna "Gasto Real" serão descontados do estoque.
+                  <strong>Atenção:</strong> Os valores da coluna &quot;Gasto Real&quot; serão descontados do estoque.
                 </div>
 
                 <div style={{ alignSelf: 'flex-start' }}>

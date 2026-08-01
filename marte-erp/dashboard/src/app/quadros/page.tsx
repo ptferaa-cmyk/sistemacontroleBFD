@@ -291,7 +291,7 @@ export default function QuadrosPage() {
         <div className={styles.emptyState}>
           <IconFrame size={56} />
           <h2>Nenhum produto cadastrado</h2>
-          <p>Clique em "Novo Produto" para começar.</p>
+          <p>Clique em &quot;Novo Produto&quot; para começar.</p>
           <button className={styles.btnAdd} onClick={openNewModal}>Novo Produto</button>
         </div>
       ) : (
@@ -315,7 +315,10 @@ export default function QuadrosPage() {
                   <td>
                     <div className={styles.tableImageCell}>
                       {q.imagemUrl ? (
-                        <img src={api.imageUrl(q.imagemUrl) ?? ''} alt={q.nome} />
+                        <>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={api.imageUrl(q.imagemUrl) ?? ''} alt={q.nome} />
+                        </>
                       ) : (
                         <span className={styles.tableEmptyImage}>Sem imagem</span>
                       )}
@@ -390,6 +393,7 @@ export default function QuadrosPage() {
                     onDrop={handleDrop}
                   >
                     {imagemUrl ? (
+                      // eslint-disable-next-line @next/next/no-img-element
                       <img src={imagemUrl.startsWith('blob:') ? imagemUrl : (api.imageUrl(imagemUrl) ?? '')} alt="Preview" />
                     ) : (
                       <>

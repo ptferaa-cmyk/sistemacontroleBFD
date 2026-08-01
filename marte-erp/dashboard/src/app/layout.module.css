@@ -1,0 +1,106 @@
+.appContainer {
+  display: flex;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #0F172A;
+  position: relative;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+  background: #0F172A;
+}
+
+.topHeader {
+  height: var(--header-height);
+  min-height: var(--header-height);
+  flex-shrink: 0;
+  padding: 0 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  background: rgba(15,23,42,.95);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid #1E293B;
+  box-shadow: 0 6px 25px rgba(0,0,0,.25);
+}
+
+.headerLeft h1 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  letter-spacing: -.03em;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+
+  padding: .55rem 1rem;
+
+  border-radius: 999px;
+
+  background: #1E293B;
+
+  border: 1px solid #334155;
+
+  color: white;
+
+  transition: .25s;
+}
+
+.userProfile:hover {
+  border-color: #0891B2;
+  background: #273549;
+  box-shadow: 0 0 18px rgba(8,145,178,.25);
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  background: linear-gradient(135deg,#0891B2,#06B6D4);
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+
+  box-shadow: 0 0 18px rgba(8,145,178,.45);
+}
+
+.contentArea {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Sem padding próprio — o page.module.css .container gerencia o espaçamento */
+  padding: 0;
+
+  background: #0F172A;
+  scroll-behavior: smooth;
+}

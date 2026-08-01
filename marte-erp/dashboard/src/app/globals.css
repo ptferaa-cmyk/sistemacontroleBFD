@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  /* ========= CYAN MODERN THEME ========= */
+
+  --bg-base: #0F172A;
+  --bg-surface: #1E293B;
+  --bg-surface-elevated: #273549;
+
+  --primary: #0891B2;
+  --primary-glow: rgba(8, 145, 178, .35);
+
+  --secondary: #06B6D4;
+  --accent: #22D3EE;
+
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+
+  --border: #334155;
+
+  --sidebar-width: 280px;
+  --header-height: 80px;
+
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 18px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-main);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Utilities */
+.glass-panel {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius-md);
+  box-shadow:
+      0 10px 30px rgba(0,0,0,.25);
+}
+
+/* Smooth Scrollbar */
+::-webkit-scrollbar {
+    width:8px;
+}
+
+::-webkit-scrollbar-track{
+    background:#020617;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#0891B2;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background:#06B6D4;
+}
+
+/* Custom Inputs & Buttons Base (to be extended by modules) */
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}

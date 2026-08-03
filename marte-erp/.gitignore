@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+
+# Next.js & Build outputs
+.next/
+dist/
+build/
+*.tsbuildinfo
+.vinext/
+
+# Logs & Debug
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# OS & Editor
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Claude Code
+.claude/
+
+# Testing & Coverage
+coverage/
+.pytest_cache/
+
+# Uploads & User data
+uploads/*
+!uploads/.gitkeep

@@ -1,0 +1,69 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Insumo {
+  id            Int            @id @default(autoincrement())
+  nome          String         @unique
+  unidade       String
+  quantidade    Float          @default(0)
+  custoUnit     Float          @default(0)
+  qtdMinima     Float          @default(0)
+  codigoCor     String?
+  fornecedor    String?
+  criadoEm      DateTime       @default(now())
+  atualizadoEm  DateTime       @updatedAt
+  movimentacoes Movimentacao[]
+  receitas      Receita[]
+}
+
+model Movimentacao {
+  id          Int      @id @default(autoincrement())
+  insumoId    Int
+  insumo      Insumo   @relation(fields: [insumoId], references: [id], onDelete: Cascade)
+  usuarioId   Int?
+  usuario     Usuario? @relation(fields: [usuarioId], references: [id], onDelete: SetNull)
+  tipo        String   // "entrada" | "saida"
+  quantidade  Float
+  motivo      String?
+  criadoEm   DateTime @default(now())
+}
+
+model Arte {
+  id          Int       @id @default(autoincrement())
+  nome        String    @unique
+  descricao   String?
+  imagemUrl   String?
+  precoVenda  Float     @default(0)
+  ativo       Boolean   @default(true)
+  criadoEm    DateTime  @default(now())
+  receitas    Receita[]
+}
+
+model Receita {
+  id         Int    @id @default(autoincrement())
+  arteId     Int
+  arte       Arte   @relation(fields: [arteId], references: [id], onDelete: Cascade)
+  insumoId   Int
+  insumo     Insumo @relation(fields: [insumoId], references: [id], onDelete: Cascade)
+  quantidade Float
+
+  @@unique([arteId, insumoId])
+}
+
+model Usuario {
+  id            Int            @id @default(autoincrement())
+  nome          String
+  email         String         @unique
+  senhaHash     String
+  cargo         String         @default("funcionario")
+  ativo         Boolean        @default(true)
+  criadoEm     DateTime       @default(now())
+  atualizadoEm  DateTime       @updatedAt
+  movimentacoes Movimentacao[]
+}

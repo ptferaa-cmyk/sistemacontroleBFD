@@ -1,0 +1,1171 @@
+/* ============================================================
+   Cidade da Arte — estilos
+   Mobile-first: regras base valem para telas pequenas,
+   media queries (min-width) ajustam para telas maiores.
+   ============================================================ */
+
+:root {
+  --cor-fundo: #F0EBE2;      /* creme/bege claro */
+  --cor-texto: #1A1A1A;      /* preto grafite */
+  --cor-branco: #fffafaf1;
+
+  --primary: #0891B2;
+  --primary-hover: #0EA5E9;
+  --primary-dark: #0369A1;
+  --primary-light: #67E8F9;
+  --primary-glow: rgba(8, 145, 178, 0.18);
+
+  --fonte-titulo: 'Playfair Display', Georgia, serif;
+  --fonte-texto: 'Poppins', 'Inter', Arial, sans-serif;
+
+  --header-altura: 70px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-texto);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------- Botões ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  font-family: var(--fonte-texto);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--cor-branco);
+  box-shadow: 0 8px 20px rgba(8, 145, 178, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-header-whats {
+  background-color: var(--cor-texto);
+  color: var(--cor-branco);
+  padding: 10px 18px;
+  font-size: 0.85rem;
+}
+
+.icon-whats {
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   HEADER FIXO
+   ============================================================ */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-altura);
+  background-color: rgba(240, 235, 226, 0.92);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.08);
+}
+
+.header-inner {
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-diamond {
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+  text-transform: lowercase;
+}
+
+/* No mobile, o texto do botão do header some para caber melhor;
+   a versão completa aparece a partir de telas maiores. */
+.btn-header-whats span {
+  display: none;
+}
+
+@media (min-width: 480px) {
+  .btn-header-whats span {
+    display: inline;
+  }
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+
+.hero {
+  min-height: 100vh;
+  padding-top: var(--header-altura);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  background:
+    radial-gradient(circle at 20% 20%, var(--primary-glow), transparent 45%),
+    radial-gradient(circle at 80% 75%, rgba(8, 145, 178, 0.14), transparent 50%),
+    linear-gradient(160deg, #F0EBE2 0%, #e6ddcb 100%);
+  overflow: hidden;
+}
+
+/* Losango decorativo grande no fundo do hero, ecoando o logo */
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 60vmax;
+  height: 60vmax;
+  border: 2px solid rgba(26, 26, 26, 0.06);
+  transform: rotate(45deg);
+  border-radius: 24px;
+  top: 50%;
+  left: 50%;
+  margin-top: -30vmax;
+  margin-left: -30vmax;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  padding: 0 24px;
+}
+
+.hero-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+  margin-bottom: 16px;
+}
+
+.hero-title {
+  font-family: var(--fonte-titulo);
+  font-weight: 800;
+  font-size: 2.4rem;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.hero-subtitle {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(26, 26, 26, 0.75);
+  margin-bottom: 32px;
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 3.4rem;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+/* ============================================================
+   SEÇÕES GERAIS
+   ============================================================ */
+
+.section {
+  padding: 80px 20px;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-inner--narrow {
+  max-width: 720px;
+  text-align: center;
+}
+
+.section-title {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: rgba(26, 26, 26, 0.65);
+  font-weight: 300;
+  margin-bottom: 48px;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.4rem;
+  }
+}
+
+/* ---------- Categorias (grid de cards) ---------- */
+
+.categorias {
+  background-color: var(--cor-branco);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (min-width: 640px) {
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background-color: var(--cor-fundo);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(26, 26, 26, 0.12);
+}
+
+.card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px 22px 24px;
+}
+
+.card-title {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: rgba(26, 26, 26, 0.7);
+  font-weight: 300;
+  margin-bottom: 14px;
+}
+
+.card-price {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  padding: 5px 14px;
+}
+
+/* ---------- Sobre a loja ---------- */
+
+.sobre-text {
+  font-size: 1rem;
+  font-weight: 300;
+  color: rgba(26, 26, 26, 0.8);
+}
+
+/* ---------- Localização ---------- */
+
+.localizacao {
+  background-color: var(--cor-branco);
+}
+
+.localizacao-text {
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.site-footer {
+  background-color: var(--cor-texto);
+  color: var(--cor-fundo);
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.footer-brand {
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  text-transform: lowercase;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: rgba(240, 235, 226, 0.6);
+  margin-bottom: 10px;
+}
+
+.footer-instagram {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--primary-light);
+}
+
+.footer-instagram:hover {
+  text-decoration: underline;
+}
+
+/* ============================================================
+   BOTÃO FLUTUANTE WHATSAPP
+   ============================================================ */
+
+.whats-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background-color: #25D366;
+  color: var(--cor-branco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+  z-index: 999;
+  transition: transform 0.2s ease;
+}
+
+.whats-float:hover {
+  transform: scale(1.08);
+}
+
+/* ============================================================
+   PAINEL ADMINISTRATIVO - CIDADE DA ARTE
+   ============================================================ */
+
+
+.painel {
+
+    width: 90%;
+    max-width: 500px;
+
+    margin: 80px auto;
+
+    background: var(--cor-branco);
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 15px 35px rgba(26,26,26,0.12);
+
+}
+
+
+
+.painel h1 {
+
+    font-family: var(--fonte-titulo);
+
+    text-align: center;
+
+    color: var(--cor-texto);
+
+    margin-bottom: 35px;
+
+}
+
+
+
+.menu-admin {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+}
+
+
+
+
+.btn-admin {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: 100%;
+
+    padding: 15px;
+
+    background: var(--primary);
+
+    color: white;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    border: none;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+
+.btn-admin:hover {
+
+    background: var(--primary-hover);
+
+    transform: translateY(-2px);
+
+}
+
+/* ===========================
+   PÁGINAS DE CATÁLOGO
+=========================== */
+
+.catalogo-hero{
+
+    padding-top: var(--header-altura);
+    min-height: 280px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+
+    background:
+        radial-gradient(circle at 20% 20%, var(--primary-glow), transparent 45%),
+        radial-gradient(circle at 80% 75%, rgba(8,145,178,.14), transparent 50%),
+        linear-gradient(160deg,#F0EBE2 0%,#e6ddcb 100%);
+
+}
+
+.catalogo{
+
+    padding:80px 20px;
+
+}
+
+.catalogo .section-inner{
+
+    max-width:1200px;
+    margin:auto;
+
+}
+
+.catalogo .section-title{
+
+    text-align:center;
+    margin-bottom:10px;
+
+}
+
+.catalogo .section-subtitle{
+
+    text-align:center;
+    margin-bottom:40px;
+    color:#666;
+
+}
+
+#lista-produtos{
+
+    margin-top:20px;
+
+}
+
+/* ===========================
+   GERENCIAR PRODUTOS ADMIN
+=========================== */
+
+
+#lista-produtos-admin {
+
+    margin-top: 25px;
+
+}
+
+
+
+.produto-lista-admin {
+
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr auto;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 12px 15px;
+
+    background-color: var(--cor-branco);
+
+    border-bottom: 1px solid rgba(26,26,26,0.08);
+
+    font-size: 0.85rem;
+
+}
+
+
+
+.produto-lista-admin:hover {
+
+    background-color: #fafafa;
+
+}
+
+
+
+.produto-lista-admin span {
+
+    color: rgba(26,26,26,0.8);
+
+}
+
+
+
+.produto-lista-admin span:first-child {
+
+    font-weight: 600;
+
+    color: var(--cor-texto);
+
+}
+
+
+
+/* Botão editar pequeno */
+
+.btn-admin-editar {
+
+    padding: 6px 12px;
+
+    background-color: var(--primary);
+
+    color: white;
+
+    border-radius: 6px;
+
+    font-size: 0.75rem;
+
+    font-weight: 600;
+
+    text-align: center;
+
+}
+
+
+
+.btn-admin-editar:hover {
+
+    background-color: var(--primary-hover);
+
+}
+
+
+
+/* Cabeçalho da lista */
+
+.lista-titulo-admin {
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr 1.5fr auto;
+
+    gap: 15px;
+
+    padding: 10px 15px;
+
+    font-size: 0.8rem;
+
+    font-weight: 600;
+
+    border-bottom: 2px solid rgba(26,26,26,0.15);
+
+}
+
+
+
+/* Ajuste para celular */
+
+@media(max-width:700px){
+
+
+    .produto-lista-admin {
+
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+
+    }
+
+
+    .lista-titulo-admin {
+
+        display:none;
+
+    }
+
+
+    .btn-admin-editar {
+
+        width: fit-content;
+
+    }
+
+
+}
+
+
+/* ===============================
+   EDITAR PRODUTO - ADMIN NOVO
+================================ */
+
+
+.editar-painel {
+
+    max-width: 750px;
+
+}
+
+
+
+.painel-topo {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 35px;
+
+}
+
+
+
+.painel-topo h1 {
+
+    margin-bottom: 5px;
+
+}
+
+
+
+.painel-topo p {
+
+    font-size: 0.85rem;
+
+    color: rgba(26,26,26,0.6);
+
+}
+
+
+
+
+.btn-voltar {
+
+    background: var(--cor-texto);
+
+    color: var(--cor-branco);
+
+    padding: 9px 18px;
+
+    border-radius: 999px;
+
+    font-size: 0.85rem;
+
+    font-weight: 600;
+
+}
+
+
+
+
+
+.form-admin {
+
+    background: var(--cor-fundo);
+
+    padding: 30px;
+
+    border-radius: 18px;
+
+}
+
+
+
+
+
+.form-linha {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+
+}
+
+
+
+
+.form-admin input,
+.form-admin select,
+.form-admin textarea {
+
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(26,26,26,0.15);
+
+    background: white;
+
+    font-family: var(--fonte-texto);
+
+    font-size: 0.9rem;
+
+
+}
+
+
+
+
+.form-admin textarea {
+
+    min-height: 130px;
+
+    resize: vertical;
+
+}
+
+
+
+
+
+.form-admin input:focus,
+.form-admin select:focus,
+.form-admin textarea:focus {
+
+
+    outline: none;
+
+    border-color: var(--primary);
+
+    box-shadow: 0 0 0 4px var(--primary-glow);
+
+
+}
+
+
+
+
+
+.btn-salvar {
+
+
+    margin-top: 20px;
+
+    height: 48px;
+
+    font-size: 1rem;
+
+}
+
+
+
+
+@media(max-width:700px){
+
+
+    .painel-topo {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+    }
+
+
+    .form-linha {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+}
+
+/* ===============================
+   AJUSTES EDITAR PRODUTO
+================================ */
+
+
+/* Títulos e textos do formulário em azul */
+
+.editar-painel h1,
+.form-admin label {
+
+    color: var(--primary-dark);
+
+}
+
+
+
+/* Texto de apoio */
+
+.painel-topo p {
+
+    color: rgba(8, 145, 178, 0.75);
+
+}
+
+
+
+
+/* Botão salvar azul */
+
+.form-admin .btn-salvar {
+
+    background-color: var(--primary);
+
+    color: var(--cor-branco);
+
+    border: none;
+
+    width: 100%;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+}
+
+
+
+
+.form-admin .btn-salvar:hover {
+
+    background-color: var(--primary-hover);
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(8,145,178,0.35);
+
+}
+
+
+/* ===============================
+   AÇÕES EDITAR PRODUTO
+================================ */
+
+
+.acoes-produto {
+
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+}
+
+
+
+.acoes-produto button {
+
+    flex: 1;
+
+}
+
+
+
+.btn-excluir {
+
+    background-color: #dc2626;
+
+    color: white;
+
+    border: none;
+
+    border-radius: 999px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+
+}
+
+
+
+.btn-excluir:hover {
+
+    background-color: #b91c1c;
+
+    transform: translateY(-2px);
+
+}
+
+
+
+@media(max-width:700px){
+
+    .acoes-produto {
+
+        flex-direction: column;
+
+    }
+
+}
+
+/* ===============================
+   LOGIN ADMIN
+================================ */
+
+
+.login-painel {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 30px;
+
+}
+
+
+
+.login-box {
+
+    width: 100%;
+
+    max-width: 420px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+
+}
+
+
+
+.login-box h1 {
+
+    text-align: center;
+
+    color: #0891B2;
+
+    font-family: "Playfair Display", serif;
+
+    margin-bottom: 10px;
+
+}
+
+
+
+.login-box p {
+
+    text-align: center;
+
+    color: #666;
+
+    margin-bottom: 30px;
+
+}
+
+
+
+
+
+.login-box .form-grupo {
+
+    margin-bottom: 20px;
+
+}
+
+
+
+.login-box label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #1A1A1A;
+
+    font-weight: 600;
+
+}
+
+
+
+.login-box input {
+
+
+    width: 100%;
+
+    padding: 14px;
+
+    border-radius: 12px;
+
+    border: 1px solid #ddd;
+
+    font-size: 15px;
+
+    outline: none;
+
+}
+
+
+
+.login-box input:focus {
+
+    border-color: #0891B2;
+
+}
+
+
+
+
+
+.login-box .btn-salvar {
+
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 10px;
+
+    border: none;
+
+    border-radius: 999px;
+
+    background: #0891B2;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+
+
+.login-box .btn-salvar:hover {
+
+
+    background: #06758d;
+
+    transform: translateY(-2px);
+
+
+}

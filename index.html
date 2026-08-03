@@ -1,4 +1,4 @@
-<!-- Cidade da Arte — landing page (catálogo visual, sem carrinho/checkout) -->
+<!-- Cidade da Arte — home (catálogo visual, sem carrinho/checkout) -->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -19,8 +19,7 @@
   <!-- ===================== HEADER FIXO ===================== -->
   <header class="site-header">
     <div class="header-inner">
-      <!-- Logo: losango geométrico + nome da marca -->
-      <a href="#topo" class="logo" aria-label="Cidade da Arte - início">
+      <a href="index.html" class="logo" aria-label="Cidade da Arte - início">
         <svg class="logo-diamond" width="34" height="34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <rect x="4" y="4" width="26" height="26" rx="2" transform="rotate(45 17 17)" fill="none" stroke="#1A1A1A" stroke-width="2"/>
           <circle cx="17" cy="17" r="4" fill="#0891B2"/>
@@ -41,81 +40,74 @@
   <main id="topo">
 
     <!-- ===================== HERO ===================== -->
+    <!-- Imagem de capa (Mona Lisa + logo) pendente: salve o arquivo em assets/hero/hero-home.jpg
+         e troque o background dessa seção em style.css (.hero) para usar essa imagem. -->
     <section class="hero">
       <div class="hero-content">
         <p class="hero-eyebrow">Fábrica de quadros e espelhos · Ilhéus, BA</p>
         <h1 class="hero-title">Leve arte para sua vida!</h1>
-        <p class="hero-subtitle">Loja de fábrica de quadros e espelhos — pronta entrega e sob medida.</p>
+        <p class="hero-subtitle">Quadros personalizados e espelhos sob medida — pronta entrega e sob encomenda.</p>
         <a href="https://wa.me/SEU_NUMERO_AQUI" target="_blank" rel="noopener" class="btn btn-primary">Peça seu orçamento</a>
       </div>
     </section>
 
-    <!-- ===================== CATEGORIAS ===================== -->
-    <section class="section categorias" id="categorias">
+    <!-- ===================== DUAS CATEGORIAS PRINCIPAIS ===================== -->
+    <section class="section categorias-principais" id="categorias">
       <div class="section-inner">
-        <h2 class="section-title">Nossas categorias</h2>
-        <p class="section-subtitle">Do clássico ao contemporâneo, um quadro para cada ambiente.</p>
+        <h2 class="section-title">O que você procura?</h2>
+        <p class="section-subtitle">Escolha uma categoria para ver todo o catálogo.</p>
 
-        <div class="cards-grid">
+        <div class="tiles-grid">
 
-          <article class="card">
-            <img class="card-img" src="https://placehold.co/600x450/F0EBE2/1A1A1A?font=playfair-display&text=Quadros+Decorativos" alt="Quadros decorativos - paisagens, abstratos, floral e minimalista" loading="lazy">
-            <div class="card-body">
-              <h3 class="card-title">Quadros Decorativos</h3>
-              <p class="card-text">Paisagens, abstratos, floral e minimalista para todos os estilos de decoração.</p>
-              <span class="card-price">Consulte valores</span>
+          <a href="quadros.html" class="tile">
+            <img class="tile-img" src="assets/quadros/barcos.jpg" alt="Quadros decorativos" loading="lazy">
+            <div class="tile-overlay">
+              <h3 class="tile-title">Quadros</h3>
+              <p class="tile-text">10 temas — com vidro ou em tela (canvas)</p>
+              <span class="tile-cta">Ver catálogo →</span>
             </div>
-          </article>
+          </a>
 
-          <article class="card">
-            <img class="card-img" src="https://placehold.co/600x450/F0EBE2/1A1A1A?font=playfair-display&text=Arte+Religiosa" alt="Quadros de arte religiosa" loading="lazy">
-            <div class="card-body">
-              <h3 class="card-title">Arte Religiosa</h3>
-              <p class="card-text">Peças que trazem fé e paz para qualquer espaço da sua casa.</p>
-              <span class="card-price">Consulte valores</span>
+          <a href="espelhos.html" class="tile">
+            <img class="tile-img" src="assets/espelhos/sala-001.jpg" alt="Espelhos decorativos" loading="lazy">
+            <div class="tile-overlay">
+              <h3 class="tile-title">Espelhos</h3>
+              <p class="tile-text">Sala, hall, banheiro, quarto e modelos sob medida</p>
+              <span class="tile-cta">Ver catálogo →</span>
             </div>
-          </article>
-
-          <article class="card">
-            <img class="card-img" src="https://placehold.co/600x450/F0EBE2/1A1A1A?font=playfair-display&text=Quadros+Infantis" alt="Quadros infantis" loading="lazy">
-            <div class="card-body">
-              <h3 class="card-title">Quadros Infantis</h3>
-              <p class="card-text">Cores e temas lúdicos para decorar o quarto dos pequenos com carinho.</p>
-              <span class="card-price">Consulte valores</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <img class="card-img" src="https://placehold.co/600x450/F0EBE2/1A1A1A?font=playfair-display&text=Coleções+Temáticas" alt="Coleções temáticas e sazonais" loading="lazy">
-            <div class="card-body">
-              <h3 class="card-title">Coleções Temáticas/Sazonais</h3>
-              <p class="card-text">Edições especiais para datas comemorativas e temporadas do ano.</p>
-              <span class="card-price">Consulte valores</span>
-            </div>
-          </article>
-
-          <article class="card">
-            <img class="card-img" src="https://placehold.co/600x450/F0EBE2/1A1A1A?font=playfair-display&text=Espelhos+Decorativos" alt="Espelhos decorativos" loading="lazy">
-            <div class="card-body">
-              <h3 class="card-title">Espelhos Decorativos</h3>
-              <p class="card-text">Modelos que unem funcionalidade e sofisticação para qualquer ambiente.</p>
-              <span class="card-price">Consulte valores</span>
-            </div>
-          </article>
+          </a>
 
         </div>
       </div>
     </section>
 
-    <!-- ===================== SOBRE A LOJA ===================== -->
+    <!-- ===================== SOBRE ===================== -->
     <section class="section sobre" id="sobre">
       <div class="section-inner section-inner--narrow">
-        <h2 class="section-title">Sobre a loja</h2>
+        <h2 class="section-title">Sobre</h2>
         <p class="sobre-text">
-          A Cidade da Arte é uma loja de fábrica, com produção 100% nacional. Trabalhamos com tela
-          canvas de alta qualidade, 100% algodão, garantindo durabilidade e um acabamento premium
-          em cada peça. Além da pronta entrega, fazemos quadros e espelhos sob medida, do jeitinho
-          que você imaginar para o seu espaço.
+          A Cidade da Arte, localizada na zona sul da cidade de Ilhéus, é uma loja que tem como
+          principal propósito trazer a arte para o cotidiano das pessoas através de quadros e
+          elementos artísticos.
+        </p>
+        <p class="sobre-text">
+          Ao adentrar na Cidade da Arte, os visitantes são imediatamente envolvidos por um ambiente
+          inspirador, onde a criatividade e a expressão artística estão presentes em cada detalhe.
+          As paredes são decoradas com quadros de diferentes estilos e temáticas, que refletem a
+          diversidade e a riqueza da arte em suas mais variadas formas.
+        </p>
+        <p class="sobre-text">
+          A loja oferece uma seleção cuidadosa das obras, garantindo assim um acervo diversificado
+          e único. Além dos quadros, a Cidade da Arte também disponibiliza elementos artísticos
+          como esculturas, cerâmicas e fotografias, permitindo que cada cliente encontre algo que
+          se encaixe perfeitamente em seu gosto e estilo.
+        </p>
+        <p class="sobre-text">
+          A Cidade da Arte é muito mais do que uma simples loja de quadros. É um espaço que celebra
+          a arte em sua essência, trazendo beleza, inspiração e cultura para a cidade de Ilhéus.
+          Se você é um amante das artes ou está em busca de algo especial para decorar seu espaço,
+          não deixe de visitar a Cidade da Arte e se encantar com suas obras e elementos artísticos
+          únicos.
         </p>
       </div>
     </section>
@@ -124,7 +116,7 @@
     <section class="section localizacao" id="localizacao">
       <div class="section-inner section-inner--narrow">
         <h2 class="section-title">Localização</h2>
-        <p class="localizacao-text">📍 Ilhéus, Bahia</p>
+        <p class="localizacao-text">📍 Zona Sul de Ilhéus, Bahia</p>
       </div>
     </section>
 

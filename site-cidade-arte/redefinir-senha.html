@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nova senha | Cidade da Arte</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<section class="painel login-painel">
+
+
+    <div class="login-box">
+
+
+        <h1>
+            Cidade da Arte
+        </h1>
+
+
+        <p>
+            Criar nova senha
+        </p>
+
+
+        <p class="texto-ajuda">
+            Digite a nova senha que você quer usar para entrar no painel.
+        </p>
+
+
+
+        <form id="formNovaSenha">
+
+
+            <div class="form-grupo">
+
+                <label>
+                    Nova senha
+                </label>
+
+
+                <input
+                    type="password"
+                    id="novaSenha"
+                    placeholder="Digite a nova senha"
+                    minlength="6"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-grupo">
+
+                <label>
+                    Confirmar nova senha
+                </label>
+
+
+                <input
+                    type="password"
+                    id="confirmarSenha"
+                    placeholder="Digite a nova senha novamente"
+                    minlength="6"
+                    required
+                >
+
+            </div>
+
+
+
+
+            <button
+                type="submit"
+                class="btn-salvar"
+            >
+
+                Salvar nova senha
+
+            </button>
+
+
+
+        </form>
+
+
+
+    </div>
+
+
+
+</section>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="supabase.js"></script>
+
+<script src="redefinir-senha.js"></script>
+
+
+
+</body>
+
+</html>

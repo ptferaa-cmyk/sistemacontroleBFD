@@ -110,3 +110,4 @@ Como é um site estático (sem build step), o deploy é direto:
 ## 📄 Licença
 
 Projeto de uso interno da Cidade da Arte. Todos os direitos reservados.
+Desenvolvido por [@vivianrcdev](https://github.com/vivianrcdev)

@@ -43,10 +43,10 @@ Após o login, você chega no **Painel Administrativo**, com os seguintes botõe
    - **Nome do produto**
    - **Categoria**: Quadros ou Espelhos
    - Se for **Quadros**: preencha o preço do Quadro, o preço da Tela e o **Tema**
-   - Se for **Espelhos**: preencha apenas o **Preço**
+   - Se for **Espelhos**: preencha apenas o **Preço** e o **Tema**
    - **Tamanho** (ex: `40x60cm`) — obrigatório
    - **Descrição** (opcional, mas recomendado)
-   - **Imagem** — escolha um arquivo de imagem (até 5 MB)
+   - **Imagem** — escolha um arquivo de imagem (até 2 MB)
    - **Disponibilidade**: Em estoque, Sob encomenda ou Indisponível
 3. Clique em **Cadastrar Produto**.
 4. O produto aparece automaticamente no catálogo do site (`quadros.html` ou `espelhos.html`), exceto se marcado como "Indisponível" — nesse caso ele aparece, mas sem botão de compra.
@@ -101,7 +101,7 @@ Clique em **Sair** no painel principal e confirme. Isso encerra sua sessão — 
 Confira se a categoria foi selecionada corretamente e se a disponibilidade não está como "Indisponível" com algum filtro de tema ativo na página que esconda ele.
 
 **Não consigo enviar a imagem.**
-Verifique se o arquivo é realmente uma imagem (jpg, png, etc.) e se tem no máximo 5 MB.
+Verifique se o arquivo é realmente uma imagem (jpg, png, etc.) e se tem no máximo 2 MB.
 
 **Esqueci a senha do painel.**
 Siga o passo 1 → "Esqueci minha senha" nesta mesma página.

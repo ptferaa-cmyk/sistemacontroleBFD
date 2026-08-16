@@ -140,7 +140,52 @@ Menu
 <div class="menu-lateral-links">
 
 <a href="#topo">Início</a>
-<a href="#categorias">Nossos produtos</a>
+
+<button type="button" class="menu-toggle" data-target="submenuProdutos">
+    Nossos produtos
+    <span class="seta-menu" aria-hidden="true">›</span>
+</button>
+
+<div id="submenuProdutos" class="submenu">
+
+    <button type="button" class="menu-toggle menu-toggle-nivel2" data-target="submenuQuadros">
+        Quadros
+        <span class="seta-menu" aria-hidden="true">›</span>
+    </button>
+
+    <div id="submenuQuadros" class="submenu submenu-nivel2">
+        <a href="quadros.html">Ver todos os quadros</a>
+        <a href="quadros.html?tema=Abstrato">Abstrato</a>
+        <a href="quadros.html?tema=Animais">Animais</a>
+        <a href="quadros.html?tema=Árvores">Árvores</a>
+        <a href="quadros.html?tema=Barcos">Barcos</a>
+        <a href="quadros.html?tema=Floral">Floral</a>
+        <a href="quadros.html?tema=Folhagens">Folhagens</a>
+        <a href="quadros.html?tema=Geométrico">Geométrico</a>
+        <a href="quadros.html?tema=Ilhéus e Região">Ilhéus e Região</a>
+        <a href="quadros.html?tema=Mar">Mar</a>
+        <a href="quadros.html?tema=Marmorizado">Marmorizado</a>
+        <a href="quadros.html?tema=Natureza">Natureza</a>
+        <a href="quadros.html?tema=Novidades">Novidades</a>
+        <a href="quadros.html?tema=Religioso">Religioso</a>
+    </div>
+
+    <button type="button" class="menu-toggle menu-toggle-nivel2" data-target="submenuEspelhos">
+        Espelhos
+        <span class="seta-menu" aria-hidden="true">›</span>
+    </button>
+
+    <div id="submenuEspelhos" class="submenu submenu-nivel2">
+        <a href="espelhos.html">Ver todos os espelhos</a>
+        <a href="espelhos.html?tema=Banheiro">Banheiro</a>
+        <a href="espelhos.html?tema=Hall">Hall</a>
+        <a href="espelhos.html?tema=Orgânico">Orgânico</a>
+        <a href="espelhos.html?tema=Quarto">Quarto</a>
+        <a href="espelhos.html?tema=Sala">Sala</a>
+    </div>
+
+</div>
+
 <a href="#sobre">Sobre a loja</a>
 <a href="#localizacao">Localização</a>
 
@@ -506,46 +551,7 @@ d="M16 3C8.8 3 3 8.8 3 16c0 2.3.6 4.5 1.8 6.4L3 29l6.8-1.8c1.8 1 3.8 1.5 5.8 1.5
 
 <!-- ===================== SCRIPT DO MENU ===================== -->
 
-<script>
-
-const btnAbrirMenu = document.getElementById("btnAbrirMenu");
-const btnFecharMenu = document.getElementById("btnFecharMenu");
-const menuLateral = document.getElementById("menuLateral");
-const fundoMenu = document.getElementById("fundoMenu");
-const linksMenu = document.querySelectorAll(".menu-lateral-links a");
-
-function abrirMenu() {
-    menuLateral.classList.add("menu-aberto");
-    fundoMenu.classList.add("fundo-menu-aberto");
-    document.body.classList.add("pagina-menu-aberto");
-    btnAbrirMenu.setAttribute("aria-expanded", "true");
-    menuLateral.setAttribute("aria-hidden", "false");
-    btnFecharMenu.focus();
-}
-
-function fecharMenu() {
-    menuLateral.classList.remove("menu-aberto");
-    fundoMenu.classList.remove("fundo-menu-aberto");
-    document.body.classList.remove("pagina-menu-aberto");
-    btnAbrirMenu.setAttribute("aria-expanded", "false");
-    menuLateral.setAttribute("aria-hidden", "true");
-}
-
-btnAbrirMenu.addEventListener("click", abrirMenu);
-btnFecharMenu.addEventListener("click", fecharMenu);
-fundoMenu.addEventListener("click", fecharMenu);
-
-linksMenu.forEach(function(link) {
-    link.addEventListener("click", fecharMenu);
-});
-
-document.addEventListener("keydown", function(evento) {
-    if (evento.key === "Escape") {
-        fecharMenu();
-    }
-});
-
-</script>
+<script src="menu.js"></script>
 
 
 </body>

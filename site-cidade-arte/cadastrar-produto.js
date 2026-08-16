@@ -6,8 +6,33 @@ const botaoCadastrar = formulario.querySelector('button[type="submit"]');
 const seletorCategoria = document.getElementById("categoria");
 const blocoPrecoDuplo = document.getElementById("precoDuplo");
 const blocoPrecoUnico = document.getElementById("precoUnico");
-const blocoTema = document.getElementById("blocoTema");
 const seletorTema = document.getElementById("tema");
+
+const TEMAS_QUADROS = [
+    "Abstrato", "Animais", "Árvores", "Barcos", "Floral",
+    "Folhagens", "Geométrico", "Ilhéus e Região", "Mar",
+    "Marmorizado", "Natureza", "Novidades", "Religioso"
+];
+
+const TEMAS_ESPELHOS = [
+    "Banheiro", "Hall", "Orgânico", "Quarto", "Sala"
+];
+
+function popularTemas(categoriaSelecionada) {
+
+    const listaTemas =
+        categoriaSelecionada === "Quadros"
+            ? TEMAS_QUADROS
+            : TEMAS_ESPELHOS;
+
+    seletorTema.innerHTML =
+        '<option value="">Selecione o tema</option>' +
+        listaTemas
+            .map(function (tema) {
+                return `<option value="${tema}">${tema}</option>`;
+            })
+            .join("");
+}
 
 function atualizarCamposPreco() {
 
@@ -17,14 +42,14 @@ function atualizarCamposPreco() {
 
         blocoPrecoDuplo.classList.remove("oculto");
         blocoPrecoUnico.classList.add("oculto");
-        blocoTema.classList.remove("oculto");
 
     } else {
 
         blocoPrecoDuplo.classList.add("oculto");
         blocoPrecoUnico.classList.remove("oculto");
-        blocoTema.classList.add("oculto");
     }
+
+    popularTemas(categoriaSelecionada);
 }
 
 seletorCategoria.addEventListener("change", atualizarCamposPreco);
@@ -48,7 +73,8 @@ formulario.addEventListener("submit", async function (evento) {
     let precoQuadro = null;
     let precoTela = null;
     let preco = null;
-    let tema = null;
+
+    const tema = seletorTema.value;
 
     if (ehQuadro) {
 
@@ -59,8 +85,6 @@ formulario.addEventListener("submit", async function (evento) {
         precoTela = Number(
             document.getElementById("precoTela").value
         );
-
-        tema = seletorTema.value;
 
     } else {
 
@@ -95,6 +119,11 @@ formulario.addEventListener("submit", async function (evento) {
         return;
     }
 
+    if (!tema) {
+        alert("Escolha o tema do produto.");
+        return;
+    }
+
     if (ehQuadro) {
 
         if (!Number.isFinite(precoQuadro) || precoQuadro <= 0) {
@@ -104,11 +133,6 @@ formulario.addEventListener("submit", async function (evento) {
 
         if (!Number.isFinite(precoTela) || precoTela <= 0) {
             alert("Digite um preço válido para a Tela.");
-            return;
-        }
-
-        if (!tema) {
-            alert("Escolha o tema do quadro.");
             return;
         }
 

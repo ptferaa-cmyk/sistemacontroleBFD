@@ -94,6 +94,38 @@ function ativarFiltrosTema() {
     const botoesFiltro =
         filtrosTema.querySelectorAll(".filtro-tema");
 
+    // Se a pessoa chegou aqui por um link do menu (ex: quadros.html?tema=Mar),
+    // já abre com aquele filtro selecionado.
+    const parametros = new URLSearchParams(window.location.search);
+    const temaNaUrl = parametros.get("tema");
+
+    if (temaNaUrl) {
+
+        const botaoCorrespondente = Array.from(botoesFiltro).find(
+            function (botao) {
+                return botao.dataset.tema === temaNaUrl;
+            }
+        );
+
+        if (botaoCorrespondente) {
+
+            temaSelecionado = temaNaUrl;
+
+            botoesFiltro.forEach(function (b) {
+                b.classList.remove("filtro-tema-ativo");
+            });
+
+            botaoCorrespondente.classList.add("filtro-tema-ativo");
+
+            // Rola até os filtros pra pessoa ver qual tema foi aplicado.
+            botaoCorrespondente.scrollIntoView({
+                behavior: "smooth",
+                inline: "center",
+                block: "nearest"
+            });
+        }
+    }
+
     botoesFiltro.forEach(function (botao) {
 
         botao.addEventListener("click", function () {

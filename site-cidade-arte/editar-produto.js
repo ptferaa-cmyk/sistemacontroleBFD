@@ -6,26 +6,57 @@ const botaoExcluir = document.getElementById("btnExcluirProduto");
 const seletorCategoria = document.getElementById("categoria");
 const blocoPrecoDuplo = document.getElementById("precoDuplo");
 const blocoPrecoUnico = document.getElementById("precoUnico");
-const blocoTema = document.getElementById("blocoTema");
 const seletorTema = document.getElementById("tema");
 
-function atualizarCamposPreco() {
+const TEMAS_QUADROS = [
+    "Abstrato", "Animais", "Árvores", "Barcos", "Floral",
+    "Folhagens", "Geométrico", "Ilhéus e Região", "Mar",
+    "Marmorizado", "Natureza", "Novidades", "Religioso"
+];
+
+const TEMAS_ESPELHOS = [
+    "Banheiro", "Hall", "Orgânico", "Quarto", "Sala"
+];
+
+function popularTemas(categoriaSelecionada, temaAtual) {
+
+    const listaTemas =
+        categoriaSelecionada === "Quadros"
+            ? TEMAS_QUADROS
+            : TEMAS_ESPELHOS;
+
+    seletorTema.innerHTML =
+        '<option value="">Selecione o tema</option>' +
+        listaTemas
+            .map(function (tema) {
+                return `<option value="${tema}">${tema}</option>`;
+            })
+            .join("");
+
+    if (temaAtual && listaTemas.includes(temaAtual)) {
+        seletorTema.value = temaAtual;
+    }
+}
+
+function atualizarCamposPreco(temaAtual) {
 
     if (seletorCategoria.value === "Quadros") {
 
         blocoPrecoDuplo.classList.remove("oculto");
         blocoPrecoUnico.classList.add("oculto");
-        blocoTema.classList.remove("oculto");
 
     } else {
 
         blocoPrecoDuplo.classList.add("oculto");
         blocoPrecoUnico.classList.remove("oculto");
-        blocoTema.classList.add("oculto");
     }
+
+    popularTemas(seletorCategoria.value, temaAtual);
 }
 
-seletorCategoria.addEventListener("change", atualizarCamposPreco);
+seletorCategoria.addEventListener("change", function () {
+    atualizarCamposPreco();
+});
 
 const parametros = new URLSearchParams(window.location.search);
 const idProduto = parametros.get("id");
@@ -115,9 +146,6 @@ async function carregarProduto() {
     document.getElementById("preco").value =
         data.preco || "";
 
-    seletorTema.value =
-        data.tema || "";
-
     document.getElementById("descricao").value =
         data.descricao || "";
 
@@ -127,7 +155,7 @@ async function carregarProduto() {
     document.getElementById("disponibilidade").value =
         data.disponibilidade || "Em estoque";
 
-    atualizarCamposPreco();
+    atualizarCamposPreco(data.tema || "");
 }
 
 formulario.addEventListener(
@@ -156,7 +184,8 @@ formulario.addEventListener(
         let precoQuadro = null;
         let precoTela = null;
         let preco = null;
-        let tema = null;
+
+        const tema = seletorTema.value;
 
         if (ehQuadro) {
 
@@ -167,8 +196,6 @@ formulario.addEventListener(
             precoTela = Number(
                 document.getElementById("precoTela").value
             );
-
-            tema = seletorTema.value;
 
         } else {
 
@@ -207,6 +234,13 @@ formulario.addEventListener(
             return;
         }
 
+        if (!tema) {
+
+            alert("Escolha o tema do produto.");
+
+            return;
+        }
+
         if (ehQuadro) {
 
             if (!Number.isFinite(precoQuadro) || precoQuadro <= 0) {
@@ -219,13 +253,6 @@ formulario.addEventListener(
             if (!Number.isFinite(precoTela) || precoTela <= 0) {
 
                 alert("Digite um preço válido para a Tela.");
-
-                return;
-            }
-
-            if (!tema) {
-
-                alert("Escolha o tema do quadro.");
 
                 return;
             }

@@ -28,9 +28,22 @@
 
     <header class="site-header">
 
-        <div class="header-inner">
+        <div class="header-inner header-index">
 
-            <a href="index.html" class="logo" aria-label="Cidade da Arte - página inicial">
+            <button
+                type="button"
+                id="btnAbrirMenu"
+                class="btn-menu"
+                aria-label="Abrir menu"
+                aria-controls="menuLateral"
+                aria-expanded="false"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <a href="index.html" class="logo logo-index" aria-label="Cidade da Arte - página inicial">
 
                 <img
                     src="logo-cidade-da-arte.png"
@@ -42,7 +55,8 @@
 
             <a href="https://wa.me/557382082439"
                 target="_blank"
-                class="btn btn-header-whats">
+                rel="noopener"
+                class="btn btn-header-whats whatsapp-index">
 
                 <span>
                     Fale no WhatsApp
@@ -53,6 +67,106 @@
         </div>
 
     </header>
+
+    <!-- ================= MENU LATERAL ================= -->
+
+    <div id="fundoMenu" class="fundo-menu"></div>
+
+    <nav
+        id="menuLateral"
+        class="menu-lateral"
+        aria-label="Menu principal"
+        aria-hidden="true"
+    >
+
+        <div class="menu-lateral-topo">
+
+            <span class="menu-lateral-titulo">
+                Menu
+            </span>
+
+            <button
+                type="button"
+                id="btnFecharMenu"
+                class="btn-fechar-menu"
+                aria-label="Fechar menu"
+            >
+                &times;
+            </button>
+
+        </div>
+
+        <div class="menu-lateral-links">
+
+            <a href="index.html">Início</a>
+
+            <button type="button" class="menu-toggle" data-target="submenuProdutos">
+                Nossos produtos
+                <span class="seta-menu" aria-hidden="true">›</span>
+            </button>
+
+            <div id="submenuProdutos" class="submenu">
+
+                <button type="button" class="menu-toggle menu-toggle-nivel2" data-target="submenuQuadros">
+                    Quadros
+                    <span class="seta-menu" aria-hidden="true">›</span>
+                </button>
+
+                <div id="submenuQuadros" class="submenu submenu-nivel2">
+                    <a href="quadros.html">Ver todos os quadros</a>
+                    <a href="quadros.html?tema=Abstrato">Abstrato</a>
+                    <a href="quadros.html?tema=Animais">Animais</a>
+                    <a href="quadros.html?tema=Árvores">Árvores</a>
+                    <a href="quadros.html?tema=Barcos">Barcos</a>
+                    <a href="quadros.html?tema=Floral">Floral</a>
+                    <a href="quadros.html?tema=Folhagens">Folhagens</a>
+                    <a href="quadros.html?tema=Geométrico">Geométrico</a>
+                    <a href="quadros.html?tema=Ilhéus e Região">Ilhéus e Região</a>
+                    <a href="quadros.html?tema=Mar">Mar</a>
+                    <a href="quadros.html?tema=Marmorizado">Marmorizado</a>
+                    <a href="quadros.html?tema=Natureza">Natureza</a>
+                    <a href="quadros.html?tema=Novidades">Novidades</a>
+                    <a href="quadros.html?tema=Religioso">Religioso</a>
+                </div>
+
+                <button type="button" class="menu-toggle menu-toggle-nivel2" data-target="submenuEspelhos">
+                    Espelhos
+                    <span class="seta-menu" aria-hidden="true">›</span>
+                </button>
+
+                <div id="submenuEspelhos" class="submenu submenu-nivel2">
+                    <a href="espelhos.html">Ver todos os espelhos</a>
+                    <a href="espelhos.html?tema=Banheiro">Banheiro</a>
+                    <a href="espelhos.html?tema=Hall">Hall</a>
+                    <a href="espelhos.html?tema=Orgânico">Orgânico</a>
+                    <a href="espelhos.html?tema=Quarto">Quarto</a>
+                    <a href="espelhos.html?tema=Sala">Sala</a>
+                </div>
+
+            </div>
+
+            <a href="index.html#sobre">Sobre a loja</a>
+            <a href="index.html#localizacao">Localização</a>
+
+            <a
+                href="https://wa.me/557382082439"
+                target="_blank"
+                rel="noopener"
+            >
+            Fale no WhatsApp
+            </a>
+
+            <a
+                href="https://instagram.com/cidadedaarte.ios"
+                target="_blank"
+                rel="noopener"
+            >
+            Instagram
+            </a>
+
+        </div>
+
+    </nav>
 
     <!-- ================= HERO ================= -->
 
@@ -169,6 +283,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script src="supabase.js"></script>
+
+    <script src="menu.js"></script>
 
     <script>
 

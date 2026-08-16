@@ -95,7 +95,7 @@ function mostrarProdutos(listaProdutos) {
             obterClasseStatus(disponibilidade);
 
         let textoPreco = "-";
-        let textoTema = "-";
+        let textoTema = produto.tema || "Sem tema";
 
         if (produto.categoria === "Quadros") {
 
@@ -108,8 +108,6 @@ function mostrarProdutos(listaProdutos) {
                 .replace(".", ",");
 
             textoPreco = `Quadro: R$ ${precoQuadro} / Tela: R$ ${precoTela}`;
-
-            textoTema = produto.tema || "Sem tema";
 
         } else {
 
